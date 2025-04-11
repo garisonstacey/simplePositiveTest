@@ -50,8 +50,24 @@ export const config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        browserName: 'chrome'
-    }],
+        browserName: 'chrome',
+        'goog:chromeOptions': {
+          args: [
+            '--disable-password-manager-reauthentication',
+            '--disable-features=PasswordCheck',
+            '--disable-popup-blocking',
+            '--disable-notifications',
+            '--disable-blink-features=AutomationControlled',
+            '--disable-features=SafetyTipUI, PasswordManagerEnabled, SafeBrowsingEnhancedProtection, SafetyTipUI'
+          ],
+          prefs: {
+            'credentials_enable_service': false,
+            'profile.password_manager_enabled': false,
+            'safebrowsing.enabled': false
+          }
+        }
+      }]
+      ,
 
     //
     // ===================
